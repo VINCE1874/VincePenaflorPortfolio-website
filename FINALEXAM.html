@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1 class="logo">About<span>Me</span></h1>
+      <ul id="nav-links">
+        <li><a href="#" id="home-link">Home</a></li>
+        <li><a href="#" id="resume-link">Resume</a></li>
+        <li><a href="#" id="contact-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="intro">
+      <img src="2.jpg" alt="Profile Photo" class="profile-photo">
+      <div class="intro-text">
+        <h2>Hello, Welcome</h2>
+        <h3>I'm Vincent Peñaflor</h3>
+        <p>I'm Vince! I'm from Balintawak Quezon City, an IT student with a deep interest in technology and problem-solving. I'm passionate about learning new tools and techniques to tackle real-world challenges. Whether it's coding, building systems, or exploring the latest tech trends, I'm always eager to grow and develop my skills. Every project is a chance for me to learn and create solutions that can make a difference.</p>
+        <button>Contact us</button>
+      </div>
+    </div>
+  </header>
+
+  <section id="works">
+    <h2>My Works in Technology</h2>
+    <div class="work-gallery">
+      <img src="1.png" alt="Work 1 - Website Design" class="zoomable-image">
+      <img src="Peñaflor_01Hands_On_Activity1.jpg" alt="Work 2 - Mobile App Development" class="zoomable-image">
+      <img src="123.jpg" alt="Work 3 - Data Analysis Dashboard" class="zoomable-image">
+    </div>
+  </section>
+  
+  <!-- Modal for Gallery Images -->
+  <div id="imageModal" class="modal">
+    <span class="close" id="closeModal">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="caption"></div>
+  </div>
+
+  <!-- Modal for Resume Image -->
+  <div id="resumeModal" class="modal">
+    <span class="close" id="resumeClose">&times;</span>
+    <img class="modal-content" id="resumeImg" src="resumeeto.jpg" alt="Resume Photo">
+    <div id="resumeCaption">Vincent Peñaflor's Resume Photo</div>
+  </div>
+
+  <!-- Modal for Contact Image -->
+  <div id="contactModal" class="modal">
+    <span class="close" id="contactClose">&times;</span>
+    <img class="modal-content" id="contactImg" src="contact.png" alt="Contact Photo">
+    <div id="contactCaption">Contact Details</div>
+  </div>
+
+  <footer>
+    <p>Contact: vincentpenaflor2@gmail.com</p>
+  </footer>
+
+  <script>
+    // Get the modal and elements inside it
+    var imageModal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImage");
+    var captionText = document.getElementById("caption");
+    var closeModal = document.getElementById("closeModal");
+
+    // Get all images in the gallery
+    var images = document.querySelectorAll(".zoomable-image");
+
+    // Add click event for each image to open it in the modal
+    images.forEach(function(image) {
+      image.onclick = function() {
+        imageModal.style.display = "block"; // Show modal
+        modalImg.src = this.src; // Set modal image source to clicked image source
+        captionText.innerHTML = this.alt; // Set caption to the image's alt text
+      };
+    });
+
+    // Close modal when 'x' is clicked
+    closeModal.onclick = function() {
+      imageModal.style.display = "none";
+    };
+
+    // Close modal when clicking outside the image
+    window.onclick = function(event) {
+      if (event.target == imageModal) {
+        imageModal.style.display = "none";
+      }
+    };
+
+    // Resume modal functionality
+    var resumeLink = document.getElementById("resume-link");
+    var resumeModal = document.getElementById("resumeModal");
+    var resumeClose = document.getElementById("resumeClose");
+
+    resumeLink.onclick = function(event) {
+      event.preventDefault();
+      resumeModal.style.display = "block"; // Show the resume modal
+    };
+
+    // Close resume modal when 'x' is clicked
+    resumeClose.onclick = function() {
+      resumeModal.style.display = "none";
+    };
+
+    // Contact modal functionality
+    var contactLink = document.getElementById("contact-link");
+    var contactModal = document.getElementById("contactModal");
+    var contactClose = document.getElementById("contactClose");
+
+    contactLink.onclick = function(event) {
+      event.preventDefault();
+      contactModal.style.display = "block"; // Show the contact modal
+    };
+
+    // Close contact modal when 'x' is clicked
+    contactClose.onclick = function() {
+      contactModal.style.display = "none";
+    };
+
+    // Close modal when clicking outside the image
+    window.onclick = function(event) {
+      if (event.target == resumeModal || event.target == contactModal) {
+        resumeModal.style.display = "none";
+        contactModal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
